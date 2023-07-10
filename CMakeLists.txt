@@ -30,8 +30,8 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     endif ()
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
     message(STATUS "You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
-else ()
-    message(WARNING "!! We recommend that you use clang-11 for developing LeetCodeJounery. You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}, which is not clang.")
+# else ()
+#     message(WARNING "!! We recommend that you use clang-11 for developing LeetCodeJounery. You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}, which is not clang.")
 endif ()
 
 ######################################################################################################################
@@ -61,7 +61,7 @@ find_program(CLANG_APPLY_REPLACEMENTS_BIN
         HINTS ${LEETCODEJONERY_CLANG_SEARCH_PATH})
 
 if ("${CLANG_APPLY_REPLACEMENTS_BIN}" STREQUAL "CLANG_APPLY_REPLACEMENTS_BIN-NOTFOUND")
-    message(WARNING "LeetCodeJounery/master couldn't find clang-apply-replacements.")
+    # message(WARNING "LeetCodeJounery/master couldn't find clang-apply-replacements.")
 else ()
     # Output compile_commands.json
     set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
@@ -82,7 +82,7 @@ message("${LEETCODEJONERY_SANITIZER} sanitizer enabled in debug mode.")
 # Compiler flags.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-parameter -Wno-attributes") #TODO: remove
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -ggdb -fsanitize=${LEETCODEJONERY_SANITIZER} -fno-omit-frame-pointer -fno-optimize-sibling-calls")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -ggdb -fsanitize=${LEETCODEJONERY_SANITIZER} -fno-omit-frame-pointer -fno-optimize-sibling-calls") #注释掉这个就不会检查内存泄漏了
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
