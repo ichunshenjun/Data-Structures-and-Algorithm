@@ -112,7 +112,7 @@ endfunction()
 ######################################################################################################################
 # MAKE TARGETS
 ######################################################################################################################
-file( GLOB APP_SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp ${CMAKE_SOURCE_DIR}/src/*/*.cpp)
+file( GLOB APP_SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp ${CMAKE_SOURCE_DIR}/src/*/*.cpp ${CMAKE_SOURCE_DIR}/src/*/*/*.cpp ${CMAKE_SOURCE_DIR}/src/*/*/*/*.cpp)
 foreach( sourcefile ${APP_SOURCES} )
     file(RELATIVE_PATH filename ${CMAKE_CURRENT_SOURCE_DIR} ${sourcefile})
 

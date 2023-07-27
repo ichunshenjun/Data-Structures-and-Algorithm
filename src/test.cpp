@@ -39,5 +39,9 @@ int main() {
     cout << map[1]->first << endl;
     string test = "abcd";
     cout << test.substr(0, 1) << endl;
+
+    vector<string> res[1001];
+    cout << res[0].empty() << endl;
+
     return 0;
 }
