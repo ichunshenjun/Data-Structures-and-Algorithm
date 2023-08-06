@@ -35,18 +35,16 @@ int main() {
 //     return res%1000000007;
 // }
 int numberOfWays(int n, int x) {
-    vector<vector<int>> dp(n+1,vector<int>(n+1,0));
-    for(int i=0;i<=n;i++)
-        dp[i][0]=1;
-    for(int i=1;i<=n;i++){
-        for(int w=1;w<=n;w++){
-            if(w-pow(i,x)<0){
-                dp[i][w]=dp[i-1][w];
-            }
-            else{
-                dp[i][w]=(dp[i-1][w-pow(i,x)]+dp[i-1][w])%(1000000007);
+    vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+    for (int i = 0; i <= n; i++) dp[i][0] = 1;
+    for (int i = 1; i <= n; i++) {
+        for (int w = 1; w <= n; w++) {
+            if (w - pow(i, x) < 0) {
+                dp[i][w] = dp[i - 1][w];
+            } else {
+                dp[i][w] = (dp[i - 1][w - pow(i, x)] + dp[i - 1][w]) % (1000000007);
             }
         }
     }
-    return dp[n][n]%(1000000007);
+    return dp[n][n] % (1000000007);
 }
