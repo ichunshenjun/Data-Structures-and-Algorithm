@@ -6,18 +6,18 @@
 #include <vector>
 using namespace std;
 int area;
-int m,n;
-int res=INT32_MAX;
+int m, n;
+int res = INT32_MAX;
 vector<vector<bool>> visited;
-void dfs(int i,int j,int count);
-bool isValid(int i,int j,int k);
-void fill(int i,int j,int k,bool arg);
-int main(){
-    cin>>m>>n;
-    area=m*n;
-    visited=vector<vector<bool>>(m,vector<bool>(n,false));
-    dfs(0,0,0);
-    cout<<res;
+void dfs(int i, int j, int count);
+bool isValid(int i, int j, int k);
+void fill(int i, int j, int k, bool arg);
+int main() {
+    cin >> m >> n;
+    area = m * n;
+    visited = vector<vector<bool>>(m, vector<bool>(n, false));
+    dfs(0, 0, 0);
+    cout << res;
     return 0;
 }
 // 骗分
@@ -42,43 +42,42 @@ int main(){
 //     }
 //     memo[sum].insert(count);
 // }
-void dfs(int i,int j,int count){
-    if(count>res){
+void dfs(int i, int j, int count) {
+    if (count > res) {
         return;
     }
-    if(j>=n){
-        dfs(i+1,0,count);
+    if (j >= n) {
+        dfs(i + 1, 0, count);
         return;
     }
-    if(i>=m){
-        res=count;
+    if (i >= m) {
+        res = count;
         return;
     }
-    if(visited[i][j]){
-        dfs(i,j+1,count);
+    if (visited[i][j]) {
+        dfs(i, j + 1, count);
         return;
     }
-    for(int k=min(m-i,n-j);k>=1;k--){
-        if(isValid(i,j,k)){
-            fill(i,j,k,true);
-            dfs(i,j+k,count+1);
-            fill(i,j,k,false);
+    for (int k = min(m - i, n - j); k >= 1; k--) {
+        if (isValid(i, j, k)) {
+            fill(i, j, k, true);
+            dfs(i, j + k, count + 1);
+            fill(i, j, k, false);
         }
     }
 }
-bool isValid(int i,int j,int k){
-    for(int x=i;x<i+k;x++){
-        for(int y=j;y<j+k;y++){
-            if(visited[x][y])
-                return false;
+bool isValid(int i, int j, int k) {
+    for (int x = i; x < i + k; x++) {
+        for (int y = j; y < j + k; y++) {
+            if (visited[x][y]) return false;
         }
     }
     return true;
 }
-void fill(int i,int j,int k,bool arg){
-    for(int x=i;x<i+k;x++){
-        for(int y=j;y<j+k;y++){
-            visited[x][y]=arg;
+void fill(int i, int j, int k, bool arg) {
+    for (int x = i; x < i + k; x++) {
+        for (int y = j; y < j + k; y++) {
+            visited[x][y] = arg;
         }
     }
 }
