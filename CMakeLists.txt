@@ -22,17 +22,17 @@ set(LEETCODEJONERY_BUILD_SUPPORT_DIR "${CMAKE_SOURCE_DIR}/build_support")
 set(LEETCODEJONERY_CLANG_SEARCH_PATH "/usr/local/bin" "/usr/bin" "/usr/local/opt/llvm/bin" "/usr/local/opt/llvm@11/bin"
         "/usr/local/Cellar/llvm/11.0.1/bin" "/opt/homebrew/opt/llvm@11/bin/")
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    if (CMAKE_CXX_COMPILER_VERSION GREATER_EQUAL "^11.")
-        message(STATUS "You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
-    else ()
-        message(WARNING "!! We recommend that you use clang-11 for developing LeetCodeJounery. You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}, a different version.")
-    endif ()
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
-    message(STATUS "You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
-# else ()
-#     message(WARNING "!! We recommend that you use clang-11 for developing LeetCodeJounery. You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}, which is not clang.")
-endif ()
+# if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+#     if (CMAKE_CXX_COMPILER_VERSION GREATER_EQUAL "^11.")
+#         message(STATUS "You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
+#     else ()
+#         message(WARNING "!! We recommend that you use clang-11 for developing LeetCodeJounery. You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}, a different version.")
+#     endif ()
+# elseif (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+#     message(STATUS "You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
+# # else ()
+# #     message(WARNING "!! We recommend that you use clang-11 for developing LeetCodeJounery. You're using ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}, which is not clang.")
+# endif ()
 
 ######################################################################################################################
 # DEPENDENCIES

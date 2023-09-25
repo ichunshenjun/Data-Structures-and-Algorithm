@@ -67,28 +67,28 @@ using namespace std;
 //     if (s.size()) s.pop_back();
 //     return s;
 // }
+#include <math.h>
 #include <iostream>
 #include <vector>
-#include <math.h>
 using namespace std;
 long long n;
-long long mod=1e9+7;
+long long mod = 1e9 + 7;
 vector<long long> odds;
 vector<long long> evens;
-int main(){
-    cin>>n;
-    long long res=0;
-    for(long long i=0;i<=n/2*9;i++){
-        evens.push_back(i%mod);
+int main() {
+    cin >> n;
+    long long res = 0;
+    for (long long i = 0; i <= n / 2 * 9; i++) {
+        evens.push_back(i % mod);
     }
-    for(long long i=1;i<=(n+1)/2*9;i++){
-        odds.push_back(i%mod);
+    for (long long i = 1; i <= (n + 1) / 2 * 9; i++) {
+        odds.push_back(i % mod);
     }
-    for(auto odd:odds){
-        for(auto even:evens){
-            res=(res+odd*even%(mod))%(mod);
+    for (auto odd : odds) {
+        for (auto even : evens) {
+            res = (res + odd * even % (mod)) % (mod);
         }
     }
-    cout<<res;
+    cout << res;
     return 0;
 }
