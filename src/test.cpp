@@ -67,28 +67,40 @@ using namespace std;
 //     if (s.size()) s.pop_back();
 //     return s;
 // }
-#include <math.h>
 #include <iostream>
+#include <unordered_map>
 #include <vector>
 using namespace std;
-long long n;
-long long mod = 1e9 + 7;
-vector<long long> odds;
-vector<long long> evens;
 int main() {
+    int n;
     cin >> n;
-    long long res = 0;
-    for (long long i = 0; i <= n / 2 * 9; i++) {
-        evens.push_back(i % mod);
+    vector<int> a(n);
+    unordered_map<int, int> aIndex;
+    unordered_map<int, int> bIndex;
+    vector<int> b(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        aIndex[a[i]] = i;
     }
-    for (long long i = 1; i <= (n + 1) / 2 * 9; i++) {
-        odds.push_back(i % mod);
+    for (int i = 0; i < n; i++) {
+        cin >> b[i];
+        bIndex[b[i]] = i;
     }
-    for (auto odd : odds) {
-        for (auto even : evens) {
-            res = (res + odd * even % (mod)) % (mod);
+    int right = 0;
+    long long ans = (long long)n * (n + 1);
+    while (right < n) {
+        if (bIndex.count(a[right])) {
+            int left = bIndex[a[right]];
+            int len = 0;
+            while (right < n && left < n && a[right] == b[left]) {
+                len++;
+                right++;
+                left++;
+            }
+            cout << len << " " << right << endl;
+            ans -= len * (len + 1) / 2;
         }
     }
-    cout << res;
+    cout << ans;
     return 0;
 }

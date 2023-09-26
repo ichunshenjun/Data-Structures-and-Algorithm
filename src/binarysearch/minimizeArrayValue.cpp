@@ -4,11 +4,11 @@
 #include <vector>
 using namespace std;
 bool check(vector<int> nums, int mid) {
-    long long gap=0;
+    long long gap = 0;
     for (int i = nums.size() - 1; i >= 1; i--) {
-        gap=max(nums[i]-mid+gap,(long long)0);
+        gap = max(nums[i] - mid + gap, (long long)0);
     }
-    if (nums[0]+gap > mid) {
+    if (nums[0] + gap > mid) {
         return false;
     }
     return true;
